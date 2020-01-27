@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
-
   <head>
-    {% load staticfiles %}
+      {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Gilbert Getuya</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -57,7 +56,7 @@
     <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link" href="https://twitter.com/GilbertGetuya">Twitter</a>
       <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+      <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
 
     </div>
   </div>
@@ -65,37 +64,15 @@
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1>Hi I'm Gilbert.</h1>
-      <p class="lead text-muted">Hey! I'm Gilbert and I love to make Django websites. It's the thrill of handling the requests that the people want!
-        <p>
-        <a href="mailto:gilzgetuya@gmail.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-      <img src="{% static 'gilbert.jpg' %}" height="250">
+            <h1 class="text-center pt-3">{{ blog.title }}</h1>
+            <p class="text-center">{{ blog.pub_date_pretty }}</p>
+            <br />
+            <img class="img-fluid" src="{{ blog.image.url }}" />
+            <br />
+            <br />
+            <p>{{ blog.body }}</p>
     </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-         {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" src="{{ job.image.url }}" />
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-    </div>
-  </div>
-
 </main>
 
 <footer class="text-muted">
